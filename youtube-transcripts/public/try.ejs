@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PDF Viewer and Q&A Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        #pdf-container {
+            width: 50%;
+            padding: 20px;
+        }
+        #form-container {
+            width: 45%;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>u can chat with  me</h1>
+    <div id="pdf-container">
+        <embed src="example.pdf" width="100%" height="600px" type="application/pdf">
+    </div>
+    <div id="form-container">
+        <h2>Ask a question about the PDF</h2>
+        <form id="question-form">
+            <label for="question">Question:</label><br>
+            <input type="text" id="question" name="question" required><br><br>
+            <input type="submit" value="Submit Question">
+        </form>
+        <div id="answer"></div>
+    </div>
+
+    <script>
+        document.getElementById("question-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // prevent default form submission
+
+            // Get the value of the question input
+            var question = document.getElementById("question").value;
+
+            // Here you can add code to process the question and get the answer
+            // For simplicity, let's just display the question as the answer
+            document.getElementById("answer").innerText = "Answer: " + question;
+        });
+    </script>
 </body>
 </html>
